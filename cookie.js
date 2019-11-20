@@ -1,19 +1,24 @@
-/*
-    onclick,oncick boucer
-    onclik ( display minicookie on cookie at mouse xy (fadout to fadin to fadeout)=> class onclick-Cookie)
-
-*/
-
-
-
 let cookieDom = document.getElementById("cookie-img");
-
-
 
 // class cookie (name,hours date,)
 let Cookie = class {
     constructor(img, x, y) {
+        // data player
+        if (sessionStorage) {
+            this.name = sessionStorage.getItem('name');
+            this.age = sessionStorage.getItem('age');
+            this.date = sessionStorage.getItem('date');
+            this.hours = sessionStorage.getItem('hours');
+            this.numCookies = sessionStorage.getItem('numCookies');
+            this.cookiesPerSec = sessionStorage.getItem('cookiesPerSec');
+        } else {
+            sessionStorage.setItem("name", "Emile");
+            sessionStorage.setItem("age", "46");
+            sessionStorage.setItem("date", new Date());
+            sessionStorage.setItem("numCookies", 0);
+            sessionStorage.setItem("cookiesPerSec", 0);
 
+        }
         this.cookie = document.createElement("IMG");
         this.x = x;
         this.y = y;
@@ -30,7 +35,6 @@ let Cookie = class {
         this.cookie.style.top = this.y + "px";
         this.cookie.addEventListener("click", () => {
             this.newParticle();
-
         })
     }
     click() {
@@ -45,6 +49,9 @@ let Cookie = class {
         this.miniCookie.classList.add("mini-cookie");
         document.body.appendChild(this.miniCookie);
     }
+
+
+
     newParticle() {
         this.particle = document.createElement("div");
         this.particle.classList.add("particleCookie");
