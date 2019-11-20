@@ -1,3 +1,17 @@
+const createElement = (balise, styles = {}, classes = [], texte) => {
+    const balise_element = document.createElement(balise); 
+    for(const style in styles){
+        balise_element.style[style] = styles[style]; 
+    }
+    for (const classe of classes){
+        balise_element.classList.add(classe); 
+    }
+    if(texte){
+        balise_element.textContent = texte; 
+    }
+}
+    
+
 class Amelioration{
   constructor(name, basicEffect, color, price, number = 0){
       this.name = name; 
@@ -61,29 +75,48 @@ class Amelioration{
       document.getElementById('ameliorations').appendChild(bouton); 
   }
 
-  //fonction pour acheter Une instance de l'amélioration (ex Grandma) 
+  //fonction pour acheter Une instance de l'amélioration (ex Grandma) avec mise à jour du prix, du porte feuille 
   buyItem(balance){
     if(balance < this.price){ //si on n'a pas l'argent pour acheter le tout alors on ne fait rien 
     }else{ 
         let previous_price = this.price; //on prend le prix initial en mémoire (sinon on paye toujours trop)
         document.getElementsByClassName(this.name)[0].getElementsByTagName('p')[0].textContent = ++this.number; //mise à jour du nb possédé 
         document.getElementsByClassName(`${this.name}_description`)[0].getElementsByTagName('h3')[0].textContent = this.price*1.2; //mise à jour prix 
-        this.price *= 1.2; //on augmente le prix de 20% à chaque fois 
+        this.price *= 1.2; //on augmente le prix de 20% à chaque fois ATTENTION PARSEINT TO ADD 
         return balance -= previous_price; //on retire le prix de la balance là problème 
     }
   }
 
+  buyUpgrade(balance){
+      //l'upgrade va toujours doubler la production (petite fonction lambda) faut trouver une fonction évolution (pour dire quand pret ou pas)
+      //alert('Bonjour'); 
+  }
+
+
   displayInformations(){
       const reference = document.getElementById(this.name); 
-      
+      console.log(reference.innerHTML); 
   }
+
   //fonction pour payer une amélioration sans bouger aux instances 
+
+  //Fonction pour vendre option 
+  //Fonction pour calculer les cookies et le cps 
 
 }
 
-let balance = 5000; 
+let balance = 5000;
 const grandma = new Amelioration('grandma', 1, 'blue', 100); 
-grandma.displayButton(); 
+const pedobear = new Amelioration('pedobear', 1000, 'red', 300); 
+
+grandma.displayButton();
+grandma.buyUpgrade(balance); 
+pedobear.displayButton(); 
+balance = pedobear.buyItem(balance); 
+
+balance = grandma.buyItem(balance); 
+balance = grandma.buyItem(balance); 
 balance = grandma.buyItem(balance); 
 console.log(balance); 
+
 grandma.displayInformations(); 
