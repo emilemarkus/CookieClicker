@@ -12,87 +12,56 @@
     <div id = 'mainWrapper'>
         <section class="blockAmelioration">
             <h2>Store</h2>
-
-            <section class="btn">
+            <div class="btn">
                 <h3>Auto-Clicker</h3>
-            </section>
+            </div>
     
-            <section class="btn">
-                <h3>Cookies Dinggler</h3>
-                <img src="cookies-diggler-removebg-preview.png" alt="" width="100px" height="100px">
-            </section>
+            <div class="btn cookieDingler" id = 'cookieDingler'>
+                <img class = 'cookieDingler_img' src="cookies-diggler-removebg-preview.png" alt="" width="100px" height="100px">
+                <section class = 'cookieDingler_description'>
+                    <h3>Cookies Dinggler</h3>
+                    <p class = 'cookieDingler_description_prix'>YY</p>
+                </section>
+                <p class = 'cookieDingler_nbItem'>X</p>
+            </div>
     
-            <section class="btn">
-                <h3>Grandma</h3>
-                <img src="3305719120_1_5_F88Uq8Ae.gif" alt="" width="100px" height="100px">
-            </section>
+            <div class="btn grandMa" id = 'grandMa'>
+                <img class = 'grandMa_img' src="3305719120_1_5_F88Uq8Ae.gif" alt="" width="100px" height="100px">
+                <section class = 'grandMa_description'>
+                    <h3>Grandma</h3>
+                    <p class = 'grandMa_description_prix'>YY</p>
+                </section>
+                <p class = 'grandMa_nbItem'>X</p>
+            </div>
     
-            <section class="btn">
-                <h3>Pedobear</h3>
-                <img src="imageonline-co-whitebackgroundremoved.png" alt="" width="100px" height="100px">
-            </section>
+            <div class="btn pedoBear" id = 'pedoBear'>
+                <img class = 'pedoBear_img' src="imageonline-co-whitebackgroundremoved.png" alt="" width="100px" height="100px">
+                <section class = 'pedoBear_description'>
+                    <h3>PedoBear</h3>
+                    <p class = 'pedoBear_description_prix'>YY</p>
+                </section>
+                <p class = 'grandMa_nbItem'>X</p>
+            </div>
 
-            <section class="btn">
-            </section>
-        </section>
+            <div class="btn">
+            </div>
+        </section> <!-- fin section blockAmeliorations-->
 
+        <!-- Début de la section Centrale -->
+        <section class = 'clicker'>
+            <h1 class="score">Vous avez X points</h1>
+            <img class = 'cookie' src="cookie_kawaii.png" alt="boutton en forme de cookie" style="width:350px;height:350px;border:0">
+        </section> <!-- Fin de la section Centrale -->
+
+        <!-- Début de la section de droite -->
+        <div class = 'blockPresentation'>
+            <div class="blockPresentation_presentation"></div>
+            <div class="blockPresentation_presentation"></div>
+            <div class="blockPresentation_presentation"></div>
+            <div class="blockPresentation_presentation"></div>
+            <div class="blockPresentation_presentation"></div>
+            <div class="blockPresentation_presentation"></div>
+        </div> <!-- fin de la section ded droite-->
     </div><!-- fin du mainWrapper -->
-    <!-- ajout des Boutons d'amélioration -->
-<div class="container">
-    <div class="blockAmelioration">
-        <div>
-            <h1>Store</h1>
-        </div>
-
-        <div class="btn" onclick="expand()">
-        </div>
-
-        <div class="btn" onclick="expand()">
-            <h1>Auto-Clicker</h1>
-        </div>
-
-        <div class="btn" onclick="expand()">
-            <h1>Cookies Dinggler</h1>
-            <img src="cookies-diggler-removebg-preview.png" alt="" width="100px" height="100px">
-        </div>
-
-        <div class="btn" onclick="expand()">
-            <h1>Grandma</h1>
-            <img src="3305719120_1_5_F88Uq8Ae.gif" alt="" width="100px" height="100px">
-        </div>
-
-        <div class="btn" onclick="expand()">
-            <h1>Pedobear</h1>
-            <img src="imageonline-co-whitebackgroundremoved.png" alt="" width="100px" height="100px">
-        </div>
-    </div>
-
-    <!-- ajout des cases upgrades -->
-
-    <div class="blockPresentation">
-        <div class="présentation"></div>
-        <div class="présentation"></div>
-        <div class="présentation"></div>
-        <div class="présentation"></div>
-        <div class="présentation"></div>
-        <div class="présentation"></div>
-    </div>
-
-    <!-- ajout des barres verticale : Ici souci de résolution -->
-    <div class="barreLeft"></div>
-    <div class="barreRight"></div>
-
-    <!--SCORE-->
-    
-    <h1 class="score">Vous avez X points</h1>
-
-
-    <!--COOKIE-->
-    <!--Creer un curseur en css-->
-    <div class="cookie">
-        <img src="cookie_kawaii.png" alt="boutton en forme de cookie" style="width:350px;height:350px;border:0">
-    </div>
-</div>
-
 </body>
 </html>
