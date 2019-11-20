@@ -1,0 +1,144 @@
+@font-face {
+    font-family: MaFont ;
+    src: url(04B_30__.TTF);
+}
+
+body{
+    margin: 0;
+    background: url("/home/user/cookie-clicker/clouds_gifs.gif");
+    background-size: cover;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockAmelioration{
+    display: flex;
+    flex-direction: column;
+    background: #bf894b;
+    width: 340px;
+    height: 700Px;
+}
+
+.btn{
+    width: 320px;
+    height: 100px;
+    /* background: url("/home/user/cookie-clicker/photofunky.gif"); */
+    background: grey;
+    background-size: cover;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    transition: .15s;
+}
+
+.btn:hover{
+    transform: scale(1.02);
+    z-index: 2;
+    box-shadow: 0px 2px 20px black;
+}
+
+h1,p{
+    color: black;
+    text-align: center;
+    font-family: MaFont;
+    font-size: 18px;
+}
+
+.blockPresentation{
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 700Px;
+    background: #bf894b;
+}
+
+
+.présentation{
+    width: 320px;
+    height: 100px;
+    /* background: url("/home/user/cookie-clicker/back8.gif"); */
+    background: grey;
+    margin-top: 10px;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+
+.barreLeft{
+    height: 7px;
+    width: 800px;
+    background: black;
+    position: absolute;
+    margin:auto;
+    top: 0%;
+    bottom: 10%;
+    left: -5%;
+    right: 80%;
+    transform: rotate(90deg);
+}
+
+.barreRight{
+    height: 7px;
+    width: 800px;
+    background: black;
+    position: absolute;
+    margin:auto;
+    top: 0%;
+    bottom: 10%;
+    left: 38%;
+    right: 50%;
+    transform: rotate(90deg);
+}
+
+.score{
+    position:absolute;
+    height: 40px;
+    bottom:5%;
+    right: 35%;
+    top: 5%;
+    left: 35%;
+    background-color:lightblue;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.cookie{
+    position:absolute;
+    bottom:15%;
+    right: 15%;
+    top: 25%;
+    left: 36%;
+} 
+
+/* .notes {
+    position: relative;
+    overflow-y: hidden;
+    width: 250px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    left: -18px;
+}
+
+.framed, a.option.framed {
+    padding: 4px 8px;
+    margin: 4px;
+    border: 3px solid transparent;
+    border-image: url(img/frameBorder.png) 3 round;
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.5), 0px 2px 4px rgba(0,0,0,0.25), 0px 0px 6px 1px rgba(0,0,0,0.5) inset;
+    -webkit-transition: opacity 0.1s ease-out;
+    -moz-transition: opacity 0.1s ease-out;
+    -ms-transition: opacity 0.1s ease-out;
+    -o-transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-out;
+} */
+
+
