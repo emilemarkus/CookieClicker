@@ -3,6 +3,7 @@ $imgDimensions :100px;
 //Probable problème de compatibilité
 *{
     box-sizing: border-box;
+    position: relative;
 }
 
 @font-face {
@@ -75,6 +76,19 @@ h2, h3{
     }
 }
 
+#upgrades{
+    display : flex;
+    justify-content: space-between; 
+    div{
+        border : 3px solid black; 
+        height : 80%; 
+        width : 30%; 
+        &:hover{
+            transform: scale(1.02);
+            box-shadow: 0px 2px 20px black;
+        }
+    }
+} 
 // ##################### Section centrale 
 .clicker{
     width : 50%; 
@@ -87,8 +101,25 @@ h2, h3{
     h1{
         color: black;
         text-align: center;
+        bottom : 100px;  
         font-family: MaFont;
         font-size: 1.7em;
+        background-color:lightblue;
+        padding: 5%;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    h2{
+        bottom : 100px; 
+    }
+    input {
+        bottom : 100px;
+        text-align: center;
+        font-weight : bold; 
+        font-size : 1.2em; 
+        background-color : lightblue; 
+        border : 2px solid black;  
     }
     img{
         width : 350px; 
