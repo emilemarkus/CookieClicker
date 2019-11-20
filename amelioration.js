@@ -9,6 +9,7 @@ const createElement = (balise, styles = {}, classes = [], texte) => {
     if(texte){
         balise_element.textContent = texte; 
     }
+    return balise_element;
 }
     
 
@@ -99,9 +100,8 @@ class Amelioration{
   }
 
   //fonction pour payer une amélioration sans bouger aux instances 
-
   //Fonction pour vendre option 
-  //Fonction pour calculer les cookies et le cps 
+  //Fonction pour calculer les cookies et le cps
 
 }
 
@@ -120,3 +120,9 @@ balance = grandma.buyItem(balance);
 console.log(balance); 
 
 grandma.displayInformations(); 
+
+const p = createElement('p', {
+    'color' : 'blue', 
+    'backgroundColor' : 'red'
+}, ['Bidon'], 'Bonjour tout le monde'); 
+document.body.appendChild(p); 
