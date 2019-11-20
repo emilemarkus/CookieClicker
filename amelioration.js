@@ -99,6 +99,8 @@ class Amelioration{
       console.log(reference.innerHTML); 
   }
 
+  //calcul du CPS (unitaire et total)
+  //calcul du NB de cookies déjà produits 
   //fonction pour payer une amélioration sans bouger aux instances 
   //Fonction pour vendre option 
   //Fonction pour calculer les cookies et le cps
