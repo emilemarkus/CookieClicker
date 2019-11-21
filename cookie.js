@@ -42,7 +42,9 @@ let Cookie = class {
         this.cookie.addEventListener("click", () => {
             //this.newParticle();
             let addtoScore = document.getElementsByClassName('clicker_score')[0];
-            addtoScore.textContent = `vous avez ${0+this.numCookies++} cookies`;
+            balance++;
+            addtoScore.textContent = `vous avez ${balance} cookies`;
+            // console.log(balance);
             //myCookie.click();
         })
     }
@@ -86,7 +88,7 @@ let Cookie = class {
             this.domCombo.style.display = "none";
             myCookie.timingCambo();
         }, lapsBeforeNextCombo + 15000);
-        console.log(lapsBeforeNextCombo);
+        // console.log(lapsBeforeNextCombo);
     }
 
     newParticle() {
@@ -115,7 +117,7 @@ let Cookie = class {
         this.innerParticle.classList.add("push");
         let intervalParticle = setInterval(() => {
             let addtoScore = document.getElementsByClassName('clicker_score')[0];
-            addtoScore.textContent = `vous avez ${0+this.numCookies++} cookies`;
+            addtoScore.textContent = `vous avez ${balance} cookies`;
         }, 10000);
     }
 
