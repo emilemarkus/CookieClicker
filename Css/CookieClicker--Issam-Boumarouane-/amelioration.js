@@ -72,10 +72,10 @@
 //       bouton.appendChild(boutonImg);
 //       bouton.appendChild(boutonDescription); 
 //       bouton.appendChild(boutonNumberPossessed);
-//       document.getElementById('ameliorations').appendChild(bouton); 
+//     //   document.getElementById('ameliorations').appendChild(bouton); 
 //   }
 
-//   //fonction pour acheter Une instance de l'amélioration (ex Grandma) avec mise à jour du prix, du porte feuille 
+// //   //fonction pour acheter Une instance de l'amélioration (ex Grandma) avec mise à jour du prix, du porte feuille 
 //   buyItem(balance){
 //     if(balance < this.price){ //si on n'a pas l'argent pour acheter le tout alors on ne fait rien 
 //     }else{ 
@@ -98,12 +98,12 @@
 //       console.log(reference.innerHTML); 
 //   }
 
-//   //Fonction pour vendre option 
-//   //Fonction pour calculer les cookies et le cps 
+  //Fonction pour vendre option 
+  //Fonction pour calculer les cookies et le cps 
 
 // }
 
-let balance = 3500;
+let balance = 2500;
 // const grandma = new Amelioration('grandma', 1, 'blue', 100); 
 // const pedobear = new Amelioration('pedobear', 1000, 'red', 300); 
 
@@ -122,25 +122,71 @@ let balance = 3500;
 
  //fonction pour payer une amélioration sans bouger aux instances UPGRADE
 let buttons = document.getElementsByClassName("btn_upgrade");
+buttons[0].setAttribute("id", 1000);
+buttons[1].setAttribute("id", 2000);
+buttons[2].setAttribute("id", 5000);
 let price_upgrade;
 for (let i = 0; i < buttons.length; i++) {
-    price_upgrade = buttons[i].getAttribute("value");
+    price_upgrade = buttons[i].getAttribute("id");
     if (balance < price_upgrade) {
-        // buttons[i].setAttribute("disabled", "disabled")
-        //    buttons[i].disabled = true;
         buttons[i].style.pointerEvents = "none";
+        buttons[i].style.border = "2px solid red";
            console.log(buttons[i])
     }
 }
     [...buttons].map(button => {
         button.addEventListener("click", e => {
-        balance = balance - button.getAttribute("value");
+        balance = balance - button.getAttribute("id");
         // multiplier
         for(i = 0; i < buttons.length; i++)
-        if (balance < buttons[i].value) {
+        if (balance < buttons[i].id) {
             buttons[i].style.pointerEvents = "none";
+            buttons[i].style.borderColor = "red";
         }
-        button.remove();
+        button.style.visibility = "hidden";
         console.log(balance)
         })
     })
+
+
+
+     //class user
+class user {
+    constructor(name, date, startHours, numCookies, cookiesPerSec) {
+        this.name = name;
+        this.date = date;
+        this.startHours = startHours;
+        this.numCookies = numCookies;
+        this.cookiesPerSec = cookiesPerSec;
+    }
+}
+
+//variables
+let key;
+let d = new Date();
+let numCookies = 0;
+let cookiesPerSec = 0;
+let input = document.querySelector("input");
+
+//action
+input.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        //get data
+    let name = input.value;
+    let date = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear();
+    let startHours;
+    //modifier minutes
+    if (d.getMinutes() < 10){
+        startHours = d.getHours() + "." + "0" + d.getMinutes();
+    } else {
+        startHours = d.getHours() + "." + d.getMinutes();
+    };
+
+    //Push info
+    input.innerHTML = name;
+
+    //create new object
+    const newUser = new user (name, date, startHours, numCookies, cookiesPerSec);
+    console.log(newUser);
+    }
+});
