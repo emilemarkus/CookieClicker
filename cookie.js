@@ -38,6 +38,9 @@ let Cookie = class {
             this.newParticle();
         })
     }
+
+
+
     click() {
         this.miniCookie = document.createElement("img");
         this.miniCookie.setAttribute("class", "minicookie");
@@ -57,6 +60,7 @@ let Cookie = class {
         this.particle = document.createElement("div");
         this.particle.classList.add("particleCookie");
         this.innerParticle = document.createElement("div");
+        this.innerParticle.classList.add("innerParticle");
         //this.particle.style.backgroundColor = "rgba(255,0,0, 0.5)";
         this.particle.style.width = this.w + "px";
         this.particle.style.height = this.h + "px";
@@ -67,20 +71,17 @@ let Cookie = class {
         this.particle.style.top = this.y + "px";
         this.particle.style.zIndex = -1;
         document.body.appendChild(this.particle);
-        this.dot = document.createElement('span');
+        this.dot = document.createElement('img');
+        this.dot.src = "finger.png";
         this.innerParticle.appendChild(this.dot);
+        this.dot.style.width = "30px"
+        this.dot.style.height = "30px"
         this.particle.appendChild(this.innerParticle);
-        this.dot.classList.add("circle");
         this.particle.classList.add("animOrbit");
         this.innerParticle.classList.add("push");
 
     }
 
-    removeParticle() {
-
-        let allParticle = document.querySelectorAll(".particleCookie");
-        allParticle[0].remove();
-    }
 }
 let myCookie = new Cookie("cookie_kawaii.png", 580, 390);
 let butt = document.getElementById('butt');
