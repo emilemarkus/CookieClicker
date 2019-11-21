@@ -1,146 +1,115 @@
-// const createElement = (balise, styles = {}, classes = [], texte) => {
-//     const balise_element = document.createElement(balise); 
-//     for(const style in styles){
-//         balise_element.style[style] = styles[style]; 
-//     }
-//     for (const classe of classes){
-//         balise_element.classList.add(classe); 
-//     }
-//     if(texte){
-//         balise_element.textContent = texte; 
-//     }
-// }
-    
-
-// class Amelioration{
-//   constructor(name, basicEffect, color, price, number = 0){
-//       this.name = name; 
-//       this.basicEffect = basicEffect; 
-//       this.number = number; 
-//       this.color = color; 
-//       this.price = price; 
-//   }
-
-//   displayButton(){
-//       //Creation du bouton 
-//       const boutonHeight = '100px', boutonWidth = '300px';
-//       const bouton = document.createElement('div'); 
-//       bouton.classList.add(this.name); 
-//       bouton.id = `${this.name}`; 
-//       bouton.style.width = boutonWidth; 
-//       bouton.style.height = boutonHeight; 
-//       bouton.style.border = '1px solid black';
-//       bouton.style.display = 'flex'; 
-//       bouton.style.alignItems = 'center'; 
-//       bouton.style.justifyContent = 'space-around';
-//       bouton.style.position = 'relative';
-
-//       //On va ensuite Ajout de la section img du bouton amélioration 
-//       const boutonImg = document.createElement('div');
-//       boutonImg.classList.add(`${this.name}_img`); 
-//       const boutonImgHeight = '50px', boutonImgWidth = '50px'; 
-//       boutonImg.style.width = boutonImgWidth; 
-//       boutonImg.style.height = boutonImgHeight; 
-//       boutonImg.style.borderRadius = '50%'; 
-//       boutonImg.style.backgroundColor = this.color;
-//       boutonImg.style.position = 'relative';
-
-//       //Ajout de la section Titre de l'amélioration 
-//       const boutonDescription = document.createElement('div'); 
-//       boutonDescription.classList.add(`${this.name}_description`); 
-//       boutonDescription.style.display = 'flex'; 
-//       boutonDescription.style.flexDirection = 'column'; 
-//       boutonDescription.style.justifyContent = 'center'; 
-//       boutonDescription.style.position = 'relative';
-      
-//       const boutonDescriptionName = document.createElement('h2'); 
-//       boutonDescriptionName.textContent = this.name; 
-//       boutonDescriptionName.style.position = 'relative'; 
-//       boutonDescription.appendChild(boutonDescriptionName);
-
-//       const boutonDescriptionPrice = document.createElement('h3'); 
-//       boutonDescriptionPrice.textContent = this.price;
-//       boutonDescriptionPrice.style.position = 'relative'; 
-//       boutonDescription.appendChild(boutonDescriptionPrice);
-
-//       // Ajout de la section qui comprend le nombre possédé d'améliorations 
-//       const boutonNumberPossessed = document.createElement('p'); 
-//       boutonNumberPossessed.textContent = this.number;  
-//       boutonNumberPossessed.style.position = 'relative'; 
-    
-//       //Ajouter le bouton dans la section en question
-//       bouton.appendChild(boutonImg);
-//       bouton.appendChild(boutonDescription); 
-//       bouton.appendChild(boutonNumberPossessed);
-//       document.getElementById('ameliorations').appendChild(bouton); 
-//   }
-
-//   //fonction pour acheter Une instance de l'amélioration (ex Grandma) avec mise à jour du prix, du porte feuille 
-//   buyItem(balance){
-//     if(balance < this.price){ //si on n'a pas l'argent pour acheter le tout alors on ne fait rien 
-//     }else{ 
-//         let previous_price = this.price; //on prend le prix initial en mémoire (sinon on paye toujours trop)
-//         document.getElementsByClassName(this.name)[0].getElementsByTagName('p')[0].textContent = ++this.number; //mise à jour du nb possédé 
-//         document.getElementsByClassName(`${this.name}_description`)[0].getElementsByTagName('h3')[0].textContent = this.price*1.2; //mise à jour prix 
-//         this.price *= 1.2; //on augmente le prix de 20% à chaque fois ATTENTION PARSEINT TO ADD 
-//         return balance -= previous_price; //on retire le prix de la balance là problème 
-//     }
-//   }
-
-//   buyUpgrade(balance){
-//       //l'upgrade va toujours doubler la production (petite fonction lambda) faut trouver une fonction évolution (pour dire quand pret ou pas)
-//       //alert('Bonjour'); 
-//   }
-
-
-//   displayInformations(){
-//       const reference = document.getElementById(this.name); 
-//       console.log(reference.innerHTML); 
-//   }
-
-//   //Fonction pour vendre option 
-//   //Fonction pour calculer les cookies et le cps 
-
-// }
-
-let balance = 3500;
-// const grandma = new Amelioration('grandma', 1, 'blue', 100); 
-// const pedobear = new Amelioration('pedobear', 1000, 'red', 300); 
-
-// grandma.displayButton();
-// grandma.buyUpgrade(balance); 
-// pedobear.displayButton(); 
-// balance = pedobear.buyItem(balance); 
-
-// balance = grandma.buyItem(balance); 
-// balance = grandma.buyItem(balance); 
-// balance = grandma.buyItem(balance); 
-// console.log(balance); 
-
-// grandma.displayInformations(); 
-
-
- //fonction pour payer une amélioration sans bouger aux instances UPGRADE
-let buttons = document.getElementsByClassName("btn_upgrade");
-let price_upgrade;
-for (let i = 0; i < buttons.length; i++) {
-    price_upgrade = buttons[i].getAttribute("value");
-    if (balance < price_upgrade) {
-        // buttons[i].setAttribute("disabled", "disabled")
-        //    buttons[i].disabled = true;
-        buttons[i].style.pointerEvents = "none";
-           console.log(buttons[i])
+const createElement = (balise, styles = {}, classes = [], texte) => {
+    const balise_element = document.createElement(balise); 
+    for(const style in styles){
+        balise_element.style[style] = styles[style]; 
     }
+    for (const classe of classes){
+        balise_element.classList.add(classe); 
+    }
+    if(texte){
+        balise_element.textContent = texte; 
+    }
+    return balise_element;
 }
-    [...buttons].map(button => {
-        button.addEventListener("click", e => {
-        balance = balance - button.getAttribute("value");
-        // multiplier
-        for(i = 0; i < buttons.length; i++)
-        if (balance < buttons[i].value) {
-            buttons[i].style.pointerEvents = "none";
-        }
-        button.remove();
-        console.log(balance)
-        })
+    
+
+class Amelioration{
+  constructor(name, color, basicEffect, price, number = 0){
+      this.color = color;
+      this.name = name; 
+      this.basicEffect = basicEffect; 
+      this.number = number; 
+      this.price = price; 
+      this.element = document.getElementById(this.name); 
+      //autoClicker , cookieDingler , grandMa, pedoBear 
+  }
+
+  displayElement(){
+    //fonction qui met à jour l'élément 
+    if(balance < this.price){//on peut le faire en ternaire mais pas le but 
+        this.element.style.borderColor = 'red'; 
+    }else{
+        this.element.style.borderColor = 'black'; 
+    }
+    this.element.getElementsByClassName(`${this.name}_description_prix`)[0].textContent = this.price; //mise à jour du prix OK 
+    this.element.getElementsByClassName(`${this.name}_nbItem`)[0].textContent = this.number; //mise à jour du nb 
+  }
+
+  buyItem(balance){
+    Amelioration.balanceToBuy(balance); 
+    if(balance < this.price){ //si on n'a pas l'argent pour acheter le tout alors on ne fait rien 
+        return balance; 
+    }else{ 
+        let previous_price = this.price; //on prend le prix initial en mémoire (sinon on paye toujours trop)
+        //il faut ensuite mettre à jour l'élément 
+        this.number++; 
+        this.displayNumber(); 
+        this.price = parseInt(1.2*this.price); //on augmente le prix de 20%
+        Amelioration.balanceToBuy(balance); //mise à jour du contenu et affichage de nos créances ... 
+        return balance -= previous_price; 
+    }
+  }
+
+  buyUpgrade(balance){
+      //l'upgrade va toujours doubler la production (petite fonction lambda) faut trouver une fonction évolution (pour dire quand pret ou pas)
+      //alert('Bonjour'); Confer Valeryia 
+  }
+
+  displayInformations(){
+      //on va le faire en attendant Godo ...
+      console.log('Bonjour'); 
+      const div = createElement('div', {
+        'backgroundColor' : 'red'
+        }, ['visible'], 'Bonjour tout le monde'); 
+    
+  }
+
+  displayNumber(){
+      //fonction qui va afficher sur le cote 
+      const index = (ameliorations.map(e => e.name).indexOf(this.name)); //récupération de l'index 
+      const destinationElement = document.getElementsByClassName('blockPresentation_presentation')[index];
+      //destinationElement.innerHTML = ''; //on remet à 0; 
+      const visuelElement = createElement('div',{
+          'width' : '30px', 
+          'height' : '30px', 
+          'border' : '1px solid black', 
+          'borderRadius' : '50%', 
+          'backgroundColor' : this.color
+      },[]); 
+      destinationElement.style.display = 'flex'; 
+      destinationElement.style.flexWrap = 'wrap';
+      for(let i = 0; i < this.number; i++){
+        destinationElement.appendChild(visuelElement); 
+      } 
+  }
+
+  static balanceToBuy(balance){
+    for(const ameliorationItem of ameliorations){
+        ameliorationItem.displayElement(); //on a un visuel si on peut acheter ou pas 
+    }
+  }
+}
+
+
+//Debut du programme 
+let balance = 5000; 
+console.log(balance); 
+const ameliorations = [
+    new Amelioration('cookieDingler', 'blue', 10, 10),
+    new Amelioration('grandMa', 'red', 20, 100),
+    new Amelioration('pedoBear', 'green', 40, 1000), 
+]; 
+
+for(const amelioration of ameliorations){
+    amelioration.displayElement(); 
+    amelioration.element.addEventListener('click', ()=> {
+        balance = amelioration.buyItem(balance); 
+        console.log(balance); 
     })
+    amelioration.element.addEventListener('mouseenter', (event)=>{
+        event.stopPropagation();
+        amelioration.displayInformations();
+    })
+}
+
+
