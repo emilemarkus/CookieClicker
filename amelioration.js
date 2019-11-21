@@ -12,6 +12,15 @@ const createElement = (balise, styles = {}, classes = [], texte) => {
     return balise_element;
 }
 
+class user {
+    constructor(name, date, startHours, numCookies, cookiesPerSec) {
+        this.name = name;
+        this.date = date;
+        this.startHours = startHours;
+        this.numCookies = numCookies;
+        this.cookiesPerSec = cookiesPerSec;
+    }
+}
 
 class Amelioration {
     constructor(name, color, basicEffect, price, number = 0) {
