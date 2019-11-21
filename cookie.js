@@ -34,12 +34,14 @@ let Cookie = class {
         this.cookie.classList.add("clicker_cookie");
         this.cookie.style.left = this.x + "px";
         this.cookie.style.top = this.y + "px";
+        this.combo();
         this.cookie.addEventListener("click", () => {
-            this.newParticle();
+            //this.newParticle();
+            let addtoScore = document.getElementsByClassName('clicker_score')[0];
+            addtoScore.textContent = `vous avez ${0+this.numCookies++} cookies`;
+            //myCookie.click();
         })
     }
-
-
 
     click() {
         this.miniCookie = document.createElement("img");
@@ -54,11 +56,35 @@ let Cookie = class {
         document.body.appendChild(this.miniCookie);
     }
 
+    combo() {
+        this.domCombo = document.createElement("img");
+        this.domCombo.src = "combo2.gif";
+        this.domCombo.style.width = this.w + 240 + "px";
+        this.domCombo.style.height = this.h + 90 + "px";
+        this.domCombo.style.top = 50 + "px";
+        this.domCombo.style.left = -15 + "px";
+        this.domCombo.style.zIndex = -1;
+        this.domCombo.style.display = "none";
+        document.getElementsByClassName('clicker')[0].appendChild(this.domCombo);
+        this.timingCambo();
+    }
 
+    timingCambo() {
+        let lapsBeforeNextCombo = Math.floor(Math.random() * (120000 - 10000) - 10000);
+        let nextCamboInTime = setTimeout(() => {
+            this.domCombo.style.display = "block";
+        }, lapsBeforeNextCombo);
+        let stopCambo = setTimeout(() => {
+            this.domCombo.style.display = "none";
+            myCookie.timingCambo();
+        }, lapsBeforeNextCombo + 15000);
+        console.log(lapsBeforeNextCombo);
+    }
 
     newParticle() {
         this.particle = document.createElement("div");
         this.particle.classList.add("particleCookie");
+        this.particle.style.zIndex = 99999999;
         this.innerParticle = document.createElement("div");
         this.innerParticle.classList.add("innerParticle");
         //this.particle.style.backgroundColor = "rgba(255,0,0, 0.5)";
@@ -79,7 +105,6 @@ let Cookie = class {
         this.particle.appendChild(this.innerParticle);
         this.particle.classList.add("animOrbit");
         this.innerParticle.classList.add("push");
-
     }
 
 }
