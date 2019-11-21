@@ -8,20 +8,26 @@ document.getElementById('autoClicker').addEventListener(('click'), () => {
 let Cookie = class {
     constructor(img, x, y) {
         // data player
-        if (sessionStorage) {
-            this.name = sessionStorage.getItem('name');
-            this.age = sessionStorage.getItem('age');
-            this.date = sessionStorage.getItem('date');
-            this.hours = sessionStorage.getItem('hours');
-            this.numCookies = sessionStorage.getItem('numCookies');
-            this.cookiesPerSec = sessionStorage.getItem('cookiesPerSec');
+        /*
+            name 
+            numCookies 
+            cookiesPerSec  
+            date 
+            startHours
+        */
+        if (localStorage.getItem('name')) {
+            this.name = localStorage.getItem('name');
+            this.date = localStorage.getItem('date');
+            this.startHours = localStorage.getItem('startHours');
+            this.numCookies = localStorage.getItem('numCookies');
+            this.cookiesPerSec = localStorage.getItem('cookiesPerSec');
         } else {
-            sessionStorage.setItem("name", "Emile");
-            sessionStorage.setItem("age", "46");
-            sessionStorage.setItem("date", new Date());
-            sessionStorage.setItem("numCookies", 0);
-            sessionStorage.setItem("cookiesPerSec", 0);
-
+            const newUser = new User(); 
+            localStorage.setItem("name", newUser.name);
+            localStorage.setItem("date", newUser.date);
+            localStorage.setItem("numCookies", newUser.numCookies);
+            localStorage.setItem("cookiesPerSec", newUser.cookiesPerSec);
+            localStorage.setItem('startHours', newUser.startHours);
         }
         this.cookie = document.createElement("IMG");
         this.x = x;

@@ -12,13 +12,36 @@ const createElement = (balise, styles = {}, classes = [], texte) => {
     return balise_element;
 }
 
-class user {
-    constructor(name, date, startHours, numCookies, cookiesPerSec) {
+
+class User {
+    constructor(numCookies = 0, cookiesPerSec = 0, name = 'John') {
+        /*
+            name 
+            numCookies 
+            cookiesPerSec  
+            date 
+            startHours
+        */
         this.name = name;
-        this.date = date;
-        this.startHours = startHours;
         this.numCookies = numCookies;
         this.cookiesPerSec = cookiesPerSec;
+        let d = new Date(); 
+        this.date =  d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear(); //date 
+        if(d.getMinutes() < 10){ //pourrait le condenser en ternaire 
+            this.startHours = d.getHours() + "." + "0" + d.getMinutes();
+        } else {
+            this.startHours = d.getHours() + "." + d.getMinutes();
+        }
+    }
+    changeFactoryName (){
+        let input = document.querySelector("input");
+        input.addEventListener("keydown", e => {
+            
+            if (e.key === "Enter") {
+                //Push info
+                this.name = input.innerHTML; //nom par défaut et changer avec le formulaire 
+            }
+        });
     }
 }
 
@@ -101,7 +124,8 @@ class Amelioration {
 
 
 //Debut du programme 
-let balance = 0;
+let balance = localStorage.getItem('numCookies');
+
 console.log(balance);
 const ameliorations = [
     new Amelioration('cookieDingler', 'blue', 10, 30),
