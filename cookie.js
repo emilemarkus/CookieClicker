@@ -22,8 +22,8 @@ let Cookie = class {
         this.cookie = document.createElement("IMG");
         this.x = x;
         this.y = y;
-        this.w = 200;
-        this.h = 200;
+        this.w = 260;
+        this.h = 260;
         this.img = img;
         this.cookie.src = img;
         this.cookie.style.position = "absolute";
@@ -31,6 +31,7 @@ let Cookie = class {
         this.cookie.style.height = this.h + "px";
         document.body.appendChild(this.cookie);
         this.cookie.classList.add("hvr-bounce-in");
+        this.cookie.classList.add("clicker_cookie");
         this.cookie.style.left = this.x + "px";
         this.cookie.style.top = this.y + "px";
         this.cookie.addEventListener("click", () => {
@@ -65,7 +66,6 @@ let Cookie = class {
         this.particle.style.left = this.x + "px";
         this.particle.style.top = this.y + "px";
         this.particle.style.zIndex = -1;
-
         document.body.appendChild(this.particle);
         this.dot = document.createElement('span');
         this.innerParticle.appendChild(this.dot);
@@ -82,8 +82,5 @@ let Cookie = class {
         allParticle[0].remove();
     }
 }
-let myCookie = new Cookie("cookie.png", 200, 200);
+let myCookie = new Cookie("cookie_kawaii.png", 580, 390);
 let butt = document.getElementById('butt');
-butt.addEventListener("click", () => {
-    myCookie.removeParticle();
-})
