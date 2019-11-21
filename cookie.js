@@ -1,5 +1,9 @@
 let cookieDom = document.getElementById("cookie-img");
 
+document.getElementById('autoClicker').addEventListener(('click'), () => {
+    myCookie.newParticle();
+})
+
 // class cookie (name,hours date,)
 let Cookie = class {
     constructor(img, x, y) {
@@ -29,7 +33,7 @@ let Cookie = class {
         this.cookie.style.position = "absolute";
         this.cookie.style.width = this.w + "px";
         this.cookie.style.height = this.h + "px";
-        document.body.appendChild(this.cookie);
+        document.getElementsByClassName('clicker')[0].appendChild(this.cookie);
         this.cookie.classList.add("hvr-bounce-in");
         this.cookie.classList.add("clicker_cookie");
         this.cookie.style.left = this.x + "px";
@@ -42,6 +46,8 @@ let Cookie = class {
             //myCookie.click();
         })
     }
+
+
 
     click() {
         this.miniCookie = document.createElement("img");
@@ -58,13 +64,15 @@ let Cookie = class {
 
     combo() {
         this.domCombo = document.createElement("img");
+        this.domCombo.style.position = "absolute";
         this.domCombo.src = "combo2.gif";
         this.domCombo.style.width = this.w + 240 + "px";
         this.domCombo.style.height = this.h + 90 + "px";
-        this.domCombo.style.top = 50 + "px";
-        this.domCombo.style.left = -15 + "px";
+        this.domCombo.style.top = this.y - 50 + "px";
+        this.domCombo.style.left = this.x - 120 + "px";
         this.domCombo.style.zIndex = -1;
-        this.domCombo.style.display = "none";
+        //this.domCombo.style.display = "none";
+        this.domCombo.classList.add("combo");
         document.getElementsByClassName('clicker')[0].appendChild(this.domCombo);
         this.timingCambo();
     }
@@ -96,7 +104,7 @@ let Cookie = class {
         this.particle.style.left = this.x + "px";
         this.particle.style.top = this.y + "px";
         this.particle.style.zIndex = -1;
-        document.body.appendChild(this.particle);
+        document.getElementsByClassName('clicker')[0].appendChild(this.particle);
         this.dot = document.createElement('img');
         this.dot.src = "finger.png";
         this.innerParticle.appendChild(this.dot);
@@ -105,8 +113,12 @@ let Cookie = class {
         this.particle.appendChild(this.innerParticle);
         this.particle.classList.add("animOrbit");
         this.innerParticle.classList.add("push");
+        let intervalParticle = setInterval(() => {
+            let addtoScore = document.getElementsByClassName('clicker_score')[0];
+            addtoScore.textContent = `vous avez ${0+this.numCookies++} cookies`;
+        }, 10000);
     }
 
 }
-let myCookie = new Cookie("cookie_kawaii.png", 580, 390);
+let myCookie = new Cookie("cookie_kawaii.png", 240, 300);
 let butt = document.getElementById('butt');

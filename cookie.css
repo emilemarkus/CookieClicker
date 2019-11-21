@@ -24,6 +24,10 @@ img {
     opacity: 0;
 }
 
+.combo {
+    mix-blend-mode: difference;
+}
+
 @keyframes minicookie {
     0% {
         opacity: 0
