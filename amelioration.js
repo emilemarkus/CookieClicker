@@ -50,9 +50,9 @@ class Amelioration{
     }
   }
 
-  buyUpgrade(balance){
-      //l'upgrade va toujours doubler la production (petite fonction lambda) faut trouver une fonction évolution (pour dire quand pret ou pas)
-      //alert('Bonjour'); Confer Valeryia 
+  buyUpgrade(){
+      this.basicEffect *=  2; //on double la production de l'élément 
+      console.log(this.basicEffect); 
   }
 
   displayInformations(){
@@ -112,4 +112,34 @@ for(const amelioration of ameliorations){
     })
 }
 
+/* Ajout Upgrade (R) Valeryia */
+let buttons = document.getElementsByClassName("btn_upgrade");
+buttons[0].setAttribute("id", 1000);
+buttons[1].setAttribute("id", 2000);
+buttons[2].setAttribute("id", 5000); //attribut id qui donne sa valeur marchande 
+let price_upgrade;
+for (let i = 0; i < buttons.length; i++) {
+    price_upgrade = buttons[i].getAttribute("id"); //récupération du prix 
+    if (balance < price_upgrade) {
+        buttons[i].style.pointerEvents = "none"; //devient incliquable 
+        buttons[i].style.border = "2px solid red";
+    }
+}
+[...buttons].map(button => { //Ajout d'event listener sur chacun des boutons 
+    button.addEventListener("click", e => {
+    balance = balance - button.getAttribute("id"); //il a été acheté 
+    // let ind = button.id;
+    let ind = buttons.indexOf(button);
+// console.log(ind)
+    // multiplier
+    for(i = 0; i < buttons.length; i++)
+        if (balance < buttons[i].id) { //si pas assez argent 
+            buttons[i].style.pointerEvents = "none";
+            buttons[i].style.borderColor = "red";
+        }
+        button.style.visibility = "hidden";
+    })
+})
 
+/*buttons -> continuer variable globale comme fait*/
+/*eventListener -> on peut le rajouter dans la méthode buyUpgrade*/
