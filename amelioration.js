@@ -10,7 +10,7 @@
 //         balise_element.textContent = texte; 
 //     }
 // }
-    
+
 
 // class Amelioration{
 //   constructor(name, basicEffect, color, price, number = 0){
@@ -52,7 +52,7 @@
 //       boutonDescription.style.flexDirection = 'column'; 
 //       boutonDescription.style.justifyContent = 'center'; 
 //       boutonDescription.style.position = 'relative';
-      
+
 //       const boutonDescriptionName = document.createElement('h2'); 
 //       boutonDescriptionName.textContent = this.name; 
 //       boutonDescriptionName.style.position = 'relative'; 
@@ -67,7 +67,7 @@
 //       const boutonNumberPossessed = document.createElement('p'); 
 //       boutonNumberPossessed.textContent = this.number;  
 //       boutonNumberPossessed.style.position = 'relative'; 
-    
+
 //       //Ajouter le bouton dans la section en question
 //       bouton.appendChild(boutonImg);
 //       bouton.appendChild(boutonDescription); 
@@ -101,6 +101,35 @@
 //   //Fonction pour vendre option 
 //   //Fonction pour calculer les cookies et le cps 
 
+// fonction affichage des info 
+let allBtn = document.querySelectorAll(".btn");
+let popup = document.createElement("DIV");
+popup.style.minWidth = "400px";
+popup.style.height = "100px";
+popup.style.display = "none";
+popup.style.backgroundColor = "red";
+popup.style.position = "absolute";
+document.body.appendChild(popup);
+
+allBtn.forEach((btndom, id) => {
+    btndom.addEventListener("mouseover", () => {
+        popup.style.display = "block";
+        if (event.clientX < 400) {
+            popup.style.left = 385 + "px";
+        } else {
+            popup.style.left = 680 + "px";
+        }
+        popup.style.top = event.clientY + "px";
+
+    })
+    btndom.addEventListener("mouseout", () => {
+        popup.style.display = "none";
+    })
+
+
+})
+
+
 // }
 
 let balance = 3500;
@@ -120,7 +149,8 @@ let balance = 3500;
 // grandma.displayInformations(); 
 
 
- //fonction pour payer une amélioration sans bouger aux instances UPGRADE
+
+//fonction pour payer une amélioration sans bouger aux instances UPGRADE
 let buttons = document.getElementsByClassName("btn_upgrade");
 let price_upgrade;
 for (let i = 0; i < buttons.length; i++) {
@@ -129,18 +159,18 @@ for (let i = 0; i < buttons.length; i++) {
         // buttons[i].setAttribute("disabled", "disabled")
         //    buttons[i].disabled = true;
         buttons[i].style.pointerEvents = "none";
-           console.log(buttons[i])
+        console.log(buttons[i])
     }
 }
-    [...buttons].map(button => {
-        button.addEventListener("click", e => {
+[...buttons].map(button => {
+    button.addEventListener("click", e => {
         balance = balance - button.getAttribute("value");
         // multiplier
-        for(i = 0; i < buttons.length; i++)
-        if (balance < buttons[i].value) {
-            buttons[i].style.pointerEvents = "none";
-        }
+        for (i = 0; i < buttons.length; i++)
+            if (balance < buttons[i].value) {
+                buttons[i].style.pointerEvents = "none";
+            }
         button.remove();
         console.log(balance)
-        })
     })
+})
