@@ -14,20 +14,30 @@ let Cookie = class {
             cookiesPerSec  
             date 
             startHours
+            indiceAc - nb auto clicker
+            indiceCd - cookie dingler
+            indiceFm - nb grand ma
+            indicePb - nb PedoBear
         */
         if (localStorage.getItem('name')) {
             this.name = localStorage.getItem('name');
             this.date = localStorage.getItem('date');
             this.startHours = localStorage.getItem('startHours');
             this.numCookies = localStorage.getItem('numCookies');
+            document.getElementById('score').innerText = this.numCookies;
             this.cookiesPerSec = localStorage.getItem('cookiesPerSec');
+            this.indiceAc = localStorage.getItem('indiceAc');
+            this.indiceCd = localStorage.getItem('indiceCd');
+            this.indiceGm = localStorage.getItem('indiceGm');
+            this.indicePb = localStorage.getItem('indicePb');
         } else {
-            const newUser = new User(); 
+            const newUser = new User();
             localStorage.setItem("name", newUser.name);
             localStorage.setItem("date", newUser.date);
             localStorage.setItem("numCookies", newUser.numCookies);
             localStorage.setItem("cookiesPerSec", newUser.cookiesPerSec);
             localStorage.setItem('startHours', newUser.startHours);
+            lovalStorage.setItem('indiceAc', newUser.indiceAc)
         }
         this.cookie = document.createElement("IMG");
         this.x = x;
@@ -79,7 +89,7 @@ let Cookie = class {
         this.domCombo.style.top = this.y - 50 + "px";
         this.domCombo.style.left = this.x - 120 + "px";
         this.domCombo.style.zIndex = -1;
-        //this.domCombo.style.display = "none";
+        this.domCombo.style.display = "none";
         this.domCombo.classList.add("combo");
         document.getElementsByClassName('clicker')[0].appendChild(this.domCombo);
         this.timingCambo();
@@ -89,12 +99,14 @@ let Cookie = class {
         let lapsBeforeNextCombo = Math.floor(Math.random() * (120000 - 10000) - 10000);
         let nextCamboInTime = setTimeout(() => {
             this.domCombo.style.display = "block";
+            this.camboTrue = 1
         }, lapsBeforeNextCombo);
         let stopCambo = setTimeout(() => {
             this.domCombo.style.display = "none";
             myCookie.timingCambo();
+            this.camboTrue = 0;
         }, lapsBeforeNextCombo + 15000);
-        // console.log(lapsBeforeNextCombo);
+        console.log(lapsBeforeNextCombo);
     }
 
     newParticle() {
@@ -123,6 +135,7 @@ let Cookie = class {
         this.innerParticle.classList.add("push");
         let intervalParticle = setInterval(() => {
             let addtoScore = document.getElementsByClassName('clicker_score')[0];
+            balance++;
             addtoScore.textContent = `vous avez ${balance} cookies`;
         }, 10000);
     }

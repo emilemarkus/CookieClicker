@@ -14,29 +14,38 @@ const createElement = (balise, styles = {}, classes = [], texte) => {
 
 
 class User {
-    constructor(numCookies = 0, cookiesPerSec = 0, name = 'John') {
+    constructor(numCookies = 0, cookiesPerSec = 0, name = 'John', indiceAc = 0, indiceCd = 0, indiceGm = 0, indicePb = 0) {
         /*
             name 
             numCookies 
             cookiesPerSec  
             date 
             startHours
+            indiceAc
+            indiceCd
+            indiceGm
+            indicePb
         */
+        this.camboTrue = 0;
         this.name = name;
         this.numCookies = numCookies;
         this.cookiesPerSec = cookiesPerSec;
-        let d = new Date(); 
-        this.date =  d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear(); //date 
-        if(d.getMinutes() < 10){ //pourrait le condenser en ternaire 
+        this.indiceAc = indiceAc;
+        this.indiceCd = indiceCd;
+        this.indiceGm = indiceGm;
+        this.indicePb = indicePb;
+        let d = new Date();
+        this.date = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear(); //date 
+        if (d.getMinutes() < 10) { //pourrait le condenser en ternaire 
             this.startHours = d.getHours() + "." + "0" + d.getMinutes();
         } else {
             this.startHours = d.getHours() + "." + d.getMinutes();
         }
     }
-    changeFactoryName (){
+    changeFactoryName() {
         let input = document.querySelector("input");
         input.addEventListener("keydown", e => {
-            
+
             if (e.key === "Enter") {
                 //Push info
                 this.name = input.innerHTML; //nom par défaut et changer avec le formulaire 
@@ -78,7 +87,11 @@ class Amelioration {
             this.displayNumber();
             this.price = parseInt(1.2 * this.price); //on augmente le prix de 20%
             Amelioration.balanceToBuy(balance); //mise à jour du contenu et affichage de nos créances ... 
+
+            //localStorage.setItem(ameliorations.name, this.number);
+            console.log(ameliorations);
             return balance -= previous_price;
+
         }
     }
 
@@ -113,6 +126,7 @@ class Amelioration {
         for (let i = 0; i < this.number; i++) {
             destinationElement.appendChild(visuelElement);
         }
+
     }
 
     static balanceToBuy(balance) {
@@ -120,6 +134,7 @@ class Amelioration {
             ameliorationItem.displayElement(); //on a un visuel si on peut acheter ou pas 
         }
     }
+
 }
 
 
@@ -128,23 +143,30 @@ let balance = localStorage.getItem('numCookies');
 
 console.log(balance);
 const ameliorations = [
+    new Amelioration('autoClicker', 'yellow', 1, 10),
     new Amelioration('cookieDingler', 'blue', 10, 30),
     new Amelioration('grandMa', 'red', 20, 100),
     new Amelioration('pedoBear', 'green', 40, 1000),
-    new Amelioration('autoClicker', 'yellow', 10, 10)
 ];
 
-for (const amelioration of ameliorations) {
-    amelioration.displayElement();
-    amelioration.element.addEventListener('click', () => {
-        balance = amelioration.buyItem(balance);
-        console.log(balance);
-    })
-    amelioration.element.addEventListener('mouseenter', (event) => {
-        event.stopPropagation();
-        amelioration.displayInformations();
-    })
-}
+let gameInterval = setInterval(() => {
+    for (const amelioration of ameliorations) {
+        amelioration.displayElement();
+        amelioration.element.addEventListener('click', () => {
+            balance = amelioration.buyItem(balance);
+            console.log(balance);
+        })
+        amelioration.element.addEventListener('mouseenter', (event) => {
+            event.stopPropagation();
+            amelioration.displayInformations();
+        })
+    }
+    localStorage.setItem("numCookies", balance);
+
+
+}, 1000);
+
+
 
 /* Ajout Upgrade (R) Valeryia */
 let buttons = document.getElementsByClassName("btn_upgrade");
@@ -172,6 +194,7 @@ for (let i = 0; i < buttons.length; i++) {
             }
         button.style.visibility = "hidden";
     })
+
 })
 
 /*buttons -> continuer variable globale comme fait*/
