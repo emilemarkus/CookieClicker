@@ -47,9 +47,9 @@ let Cookie = class {
         this.combo();
         this.cookie.addEventListener("click", () => {
             //this.newParticle();
-            let addtoScore = document.getElementsByClassName('clicker_score')[0];
+            //let addtoScore = document.getElementsByClassName('clicker_score')[0];
             balance++;
-            addtoScore.textContent = `vous avez ${balance} cookies`;
+            //addtoScore.textContent = `vous avez ${balance} cookies`;
             // console.log(balance);
             //myCookie.click();
         })
@@ -121,10 +121,10 @@ let Cookie = class {
         this.particle.appendChild(this.innerParticle);
         this.particle.classList.add("animOrbit");
         this.innerParticle.classList.add("push");
-        let intervalParticle = setInterval(() => {
+       /* let intervalParticle = setInterval(() => {
             let addtoScore = document.getElementsByClassName('clicker_score')[0];
             addtoScore.textContent = `vous avez ${balance} cookies`;
-        }, 10000);
+        }, 10000);*/
     }
 
 }

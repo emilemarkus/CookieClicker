@@ -77,6 +77,7 @@ class Amelioration {
             this.number++;
             this.displayNumber();
             this.price = parseInt(1.2 * this.price); //on augmente le prix de 20%
+            Amelioration.calculateCPS(); 
             Amelioration.balanceToBuy(balance); //mise à jour du contenu et affichage de nos créances ... 
             return balance -= previous_price;
         }
@@ -89,7 +90,6 @@ class Amelioration {
 
     displayInformations() {
         //on va le faire en attendant Godo ...
-        console.log('Bonjour');
         const div = createElement('div', {
             'backgroundColor': 'red'
         }, ['visible'], 'Bonjour tout le monde');
@@ -120,18 +120,28 @@ class Amelioration {
             ameliorationItem.displayElement(); //on a un visuel si on peut acheter ou pas 
         }
     }
+
+    static calculateCPS(){
+        let totalCPS = 0; 
+        for(const amelioration of ameliorations){
+            totalCPS += amelioration.basicEffect * amelioration.number; 
+        }
+        document.getElementsByClassName('clicker_cps')[0].textContent = totalCPS; 
+    }
+
 }
 
 
 //Debut du programme 
 let balance = localStorage.getItem('numCookies');
 
+//Fonction rebuild  à faire 
 console.log(balance);
 const ameliorations = [
+    new Amelioration('autoClicker', 'yellow', 10, 10), 
     new Amelioration('cookieDingler', 'blue', 10, 30),
     new Amelioration('grandMa', 'red', 20, 100),
     new Amelioration('pedoBear', 'green', 40, 1000),
-    new Amelioration('autoClicker', 'yellow', 10, 10)
 ];
 
 for (const amelioration of ameliorations) {
@@ -145,6 +155,8 @@ for (const amelioration of ameliorations) {
         amelioration.displayInformations();
     })
 }
+
+
 
 /* Ajout Upgrade (R) Valeryia */
 let buttons = document.getElementsByClassName("btn_upgrade");
@@ -173,6 +185,11 @@ for (let i = 0; i < buttons.length; i++) {
         button.style.visibility = "hidden";
     })
 })
-
-/*buttons -> continuer variable globale comme fait*/
-/*eventListener -> on peut le rajouter dans la méthode buyUpgrade*/
+setInterval(()=>{
+    //balance += parseInt(document.getElementsByClassName('clicker_cps')[0].textContent) * 1; 
+    //calculer le le CPS -> 
+    let cps = parseInt(document.getElementsByClassName('clicker_cps')[0].textContent); 
+    balance += cps; //on ajoute la récolte des cookies 
+    balance = parseInt(balance); 
+    document.getElementById('score').textContent = `Vous avez ${balance} Cookies`; 
+}, 1000);
