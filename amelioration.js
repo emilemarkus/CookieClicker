@@ -87,12 +87,16 @@ class Amelioration {
             this.displayNumber();
             this.price = parseInt(1.2 * this.price); //on augmente le prix de 20%
             Amelioration.balanceToBuy(balance); //mise à jour du contenu et affichage de nos créances ... 
-
             //localStorage.setItem(ameliorations.name, this.number);
-            console.log(ameliorations);
-            return balance -= previous_price;
 
+            for (let i = 0; i <= ameliorations.length - 1; i++) {
+                localStorage.setItem(ameliorations[i].name, ameliorations[i].number);
+            };
+            return balance -= previous_price;
         }
+
+
+
     }
 
     buyUpgrade() {
@@ -106,6 +110,28 @@ class Amelioration {
         const div = createElement('div', {
             'backgroundColor': 'red'
         }, ['visible'], 'Bonjour tout le monde');
+
+    }
+
+    rebuild(i) {
+        //const index = localStorage.getItem(ameliorations[i].name);
+        const numOf = localStorage.getItem(ameliorations[i].name, ameliorations[i].number)
+        console.log(i + "=" + numOf);
+        // const index = (ameliorations.map(e => e.name).indexOf(this.name)); //récupération de l'index 
+        const destinationElement = document.getElementsByClassName('blockPresentation_presentation')[i];
+        //destinationElement.innerHTML = ''; //on remet à 0; 
+        const visuelElement = createElement('div', {
+            'width': '30px',
+            'height': '30px',
+            'border': '1px solid black',
+            'borderRadius': '50%',
+            'backgroundColor': this.color
+        }, []);
+        destinationElement.style.display = 'flex';
+        destinationElement.style.flexWrap = 'wrap';
+        for (let j = 0; j < this.numOf; j++) {
+            destinationElement.appendChild(visuelElement);
+        }
 
     }
 

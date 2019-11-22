@@ -26,10 +26,9 @@ let Cookie = class {
             this.numCookies = localStorage.getItem('numCookies');
             document.getElementById('score').innerText = this.numCookies;
             this.cookiesPerSec = localStorage.getItem('cookiesPerSec');
-            this.indiceAc = localStorage.getItem('indiceAc');
-            this.indiceCd = localStorage.getItem('indiceCd');
-            this.indiceGm = localStorage.getItem('indiceGm');
-            this.indicePb = localStorage.getItem('indicePb');
+            for (let i = 0; i <= 3; i++) {
+                ameliorations[i].rebuild(i);
+            }
         } else {
             const newUser = new User();
             localStorage.setItem("name", newUser.name);
