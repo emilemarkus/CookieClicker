@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -37,26 +38,20 @@ h2, h3 {
 }
 
 .btn {
-  /*width: 320px;
-    height: 100px;*/
-  width: 80%;
+  width: 95%;
   height: 15%;
-  /* background: url("/home/user/cookie-clicker/photofunky.gif"); */
-  background: grey;
+  background: url("Varying-Stripes (3).svg");
   background-size: cover;
   cursor: pointer;
   margin-bottom: 10px;
-  /*
-    display: flex;
-    justify-content: center;
-    */
-  -webkit-transition: .15s;
-  transition: .15s;
+  border: 3px solid black;
+  -webkit-transition: .20s;
+  transition: .20s;
 }
 
 .btn:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
   -webkit-box-shadow: 0px 2px 20px black;
           box-shadow: 0px 2px 20px black;
 }
@@ -94,6 +89,16 @@ h2, h3 {
   padding: 0 10px;
 }
 
+.blockAmelioration .autoClicker img {
+  width: 60px;
+  height: 60px;
+}
+
+.blockAmelioration .cookieDingler img {
+  width: 130px;
+  height: 100px;
+}
+
 #upgrades {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,25 +108,17 @@ h2, h3 {
           justify-content: space-between;
 }
 
+#upgrades:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-box-shadow: 0px 0px 0px black;
+          box-shadow: 0px 0px 0px black;
+}
+
 #upgrades div {
   border: 3px solid black;
   height: 80%;
   width: 30%;
-}
-
-#upgrades div:nth-child(1) {
-  background-image: url("burning.jpg");
-  background-size: cover;
-}
-
-#upgrades div:nth-child(2) {
-  background-image: url("mamygun.jpg");
-  background-size: cover;
-}
-
-#upgrades div:nth-child(3) {
-  background-image: url("7b2j4.jpg");
-  background-size: cover;
 }
 
 #upgrades div:hover {
@@ -129,6 +126,11 @@ h2, h3 {
           transform: scale(1.02);
   -webkit-box-shadow: 0px 2px 20px black;
           box-shadow: 0px 2px 20px black;
+}
+
+#upgrades div img {
+  width: 100%;
+  height: 100%;
 }
 
 .clicker {
@@ -153,7 +155,7 @@ h2, h3 {
 .clicker h1 {
   color: black;
   text-align: center;
-  bottom: 100px;
+  bottom: 50px;
   font-family: MaFont;
   font-size: 1.7em;
   background-color: lightblue;
@@ -164,11 +166,11 @@ h2, h3 {
 }
 
 .clicker h2 {
-  bottom: 100px;
+  bottom: 50px;
 }
 
 .clicker input {
-  bottom: 100px;
+  bottom: 50px;
   text-align: center;
   font-weight: bold;
   font-size: 1.2em;
@@ -197,27 +199,15 @@ h2, h3 {
   width: 25%;
 }
 
-/* .notes {
-    position: relative;
-    overflow-y: hidden;
-    width: 250px;
-    padding-right: 16px;
-    padding-bottom: 8px;
-    left: -18px;
+.blockPresentation .btn {
+  background: url("fond-de-jeu-vidéo-forêt-bande-dessinée-105306846.jpg");
+  background-size: cover;
 }
 
-.framed, a.option.framed {
-    padding: 4px 8px;
-    margin: 4px;
-    border: 3px solid transparent;
-    border-image: url(img/frameBorder.png) 3 round;
-    border-radius: 2px;
-    box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.5), 0px 2px 4px rgba(0,0,0,0.25), 0px 0px 6px 1px rgba(0,0,0,0.5) inset;
-    -webkit-transition: opacity 0.1s ease-out;
-    -moz-transition: opacity 0.1s ease-out;
-    -ms-transition: opacity 0.1s ease-out;
-    -o-transition: opacity 0.1s ease-out;
-    transition: opacity 0.1s ease-out;
+.blockPresentation_presentation:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-box-shadow: 0px 0px 0px black;
+          box-shadow: 0px 0px 0px black;
 }
-*/
 /*# sourceMappingURL=retouche.css.map */
